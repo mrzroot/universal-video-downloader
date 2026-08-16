@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Video Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-area">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <h1>Super Video Downloader</h1>
+          <span class="badge">۱۰۰٪ نامحدود و رایگان</span>
+        </div>
+      </div>
+      <button id="refreshBtn" class="icon-btn" title="اسکن مجدد صفحه">🔄</button>
+    </header>
+
+    <!-- Info Bar -->
+    <div class="info-bar">
+      <span id="detectedCount">در حال جستجوی ویدیوها...</span>
+      <span class="status-indicator active"></span>
+    </div>
+
+    <!-- Video List Container -->
+    <div id="videoList" class="video-list">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🎬</div>
+        <p class="empty-title">ویدیویی شناسایی نشد!</p>
+        <p class="empty-desc">ویدیو را در صفحه پلی کنید تا لینک استریم آن سریعاً شکار شود.</p>
+      </div>
+    </div>
+
+    <!-- Footer Controls -->
+    <footer class="footer">
+      <button id="downloadAllBtn" class="btn btn-secondary" style="display: none;">
+        <span>دانلود همه</span>
+      </button>
+      <div class="footer-note">
+        <span>بدون واترمارک • بدون محدودیت حجم • HLS / MP4</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

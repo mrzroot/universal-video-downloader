@@ -40,7 +40,7 @@
    - **Microsoft Edge**: `edge://extensions`
    - **Brave Browser**: `brave://extensions`
 3. Toggle **Developer mode** (حالت توسعه‌دهنده) in the top-right corner.
-4. Click **Load unpacked** (بارگذاری بسته بازنشده) and select the `Universal-Video-Downloader-Extension` directory.
+4. Click **Load unpacked** (بارگذاری بسته بازنشده) and select the cloned `universal-video-downloader` folder (the one that contains `manifest.json`).
 5. Pin the extension and open any video page to start downloading!
 
 ---
@@ -94,5 +94,5 @@ Feel free to open Issues, PRs, or star ⭐ this repository if it helped you!
 ---
 
 <div align="center">
-  <sub>Licensed under the <b>MIT License</b> · Built with modern JavaScript & Chrome Extension MV3</sub>
+  <sub>Licensed under the <a href="LICENSE"><b>MIT License</b></a> · Built with modern JavaScript & Chrome Extension MV3</sub>
 </div>

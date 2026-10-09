@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en" data-lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Super Video Downloader · Find the real video stream on any page</title>
+<meta name="description" content="A Manifest V3 extension for Chrome, Edge and Brave that sniffs MP4, WebM, HLS (m3u8) and DASH streams from network traffic and video tags, then lets you save or copy them. Runs entirely in your browser. MIT.">
+<meta name="theme-color" content="#09080d">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Super Video Downloader · دانلودر ویدیو">
+<meta property="og:description" content="Sniff the real video stream on a page and save it. Chromium MV3 extension, 100% client-side.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mrzroot.github.io/universal-video-downloader/">
+<link rel="canonical" href="https://mrzroot.github.io/universal-video-downloader/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>(function(){var d=document.documentElement,l='en';try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('mrz-lang')||'en'}catch(e){}if(l==='fa'){d.lang='fa';d.dir='rtl';d.setAttribute('data-lang','fa')}})()</script>
+<style>
+@font-face{font-family:Vazirmatn;src:url(fonts/vazirmatn-arabic.woff2) format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+:root{--bg:#09080d;--bg2:#100e16;--panel:#15121d;--panel2:#1c1826;--line:#2a2436;--line2:#3a3249;--fg:#fbf3ea;--mut:#a99fb6;--dim:#6f6680;
+--coral:#ff4f6d;--peach:#ff9e7a;--lilac:#b69cff;--gold:#ffd27a;--sky:#38bdf8;--ok:#5be3a0;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,Vazirmatn,sans-serif;--fa:Vazirmatn,"Segoe UI",Tahoma,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;color:var(--fg);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html[data-lang=fa] body{font-family:var(--fa);line-height:1.9}
+html[data-lang=en] [lang=fa],html[data-lang=fa] [lang=en]{display:none!important}
+a{color:var(--peach);text-decoration:none}a:hover{text-decoration:underline}
+code{font-family:var(--mono);font-size:.9em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+body:after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+.strip{height:22px;background:#000;background-image:radial-gradient(circle at 50% 50%,var(--bg2) 0 5px,transparent 5.5px);background-size:30px 22px;background-position:center;border-block:1px solid #1e1a26}
+/* nav */
+.top{position:sticky;top:0;z-index:30;background:rgba(9,8,13,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--fg);font-weight:800;letter-spacing:.02em}
+.brand:hover{text-decoration:none}.brand img{width:30px;height:30px}
+.top nav{margin-inline-start:auto;display:flex;align-items:center;gap:20px;font-size:14px}
+.top nav a{color:var(--mut)}.top nav a:hover{color:var(--fg);text-decoration:none}
+.lang{display:flex;border:1px solid var(--line2);border-radius:999px;overflow:hidden}
+.lang button{background:none;border:0;color:var(--mut);font:700 12px var(--sans);padding:6px 11px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--coral);color:#fff}
+.gh{border:1px solid var(--line2);padding:6px 14px;border-radius:999px;color:var(--fg)!important}
+/* hero */
+.hero{padding:70px 0 80px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:900px;height:900px;inset-inline-end:-300px;top:-300px;background:radial-gradient(circle,rgba(255,79,109,.22),transparent 60%);pointer-events:none}
+.hero:after{content:"";position:absolute;width:700px;height:700px;inset-inline-start:-300px;bottom:-400px;background:radial-gradient(circle,rgba(182,156,255,.16),transparent 60%);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:center}
+.hero .wrap>*{min-width:0}
+.slate{display:inline-flex;align-items:center;gap:0;font:700 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
+.slate span{padding:6px 10px}.slate span:first-child{background:var(--fg);color:var(--bg)}
+html[data-lang=fa] .slate{letter-spacing:.04em}
+h1{font-size:clamp(40px,5.4vw,70px);line-height:1;letter-spacing:-.035em;margin:22px 0 20px;font-weight:900}
+html[data-lang=fa] h1{letter-spacing:0;line-height:1.35;font-size:clamp(34px,4.4vw,56px)}
+h1 .g{background:linear-gradient(95deg,var(--coral),var(--peach) 50%,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--mut);margin:0 0 30px;max-width:540px}.lead b{color:var(--fg)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:800;font-size:15px;border:1px solid var(--line2);color:var(--fg);background:var(--panel)}
+.btn:hover{text-decoration:none;border-color:var(--coral)}
+.btn.p{background:var(--coral);border-color:var(--coral);color:#fff;box-shadow:0 10px 40px -10px rgba(255,79,109,.8)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font:600 12px var(--mono);border:1px solid var(--line2);border-radius:999px;padding:4px 11px;color:var(--mut)}
+/* mock browser */
+.br{background:var(--panel);border:1px solid var(--line2);border-radius:14px;box-shadow:0 50px 100px -40px #000,0 0 0 1px rgba(255,255,255,.02) inset;position:relative;overflow:visible}
+.br .chrome{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel2);border-radius:14px 14px 0 0}
+.dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#3a3249}
+.url{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 14px;font:12px var(--mono);color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;direction:ltr;text-align:left}
+.ext{position:relative;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;cursor:pointer;border:0;background:none;padding:0}
+.ext img{width:20px;height:20px}
+.ext.on{background:rgba(56,189,248,.18)}
+.ext b{position:absolute;top:-4px;right:-6px;background:#0284c7;color:#fff;font:700 10px var(--sans);border-radius:6px;padding:1px 5px;min-width:16px;text-align:center;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.ext b.show{transform:scale(1)}
+.vp{direction:ltr;position:relative;aspect-ratio:16/8.2;margin:14px;border-radius:10px;overflow:hidden;background:#000}
+.scene{position:absolute;inset:0;background:linear-gradient(120deg,#2a1838,#5b1f3d 40%,#ff4f6d 75%,#ffb37a);background-size:300% 300%;animation:scene 10s ease-in-out infinite}
+.scene:before{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,#0008),repeating-linear-gradient(90deg,transparent 0 40px,#0002 40px 42px)}
+.sun{position:absolute;width:26%;aspect-ratio:1;border-radius:50%;left:55%;top:22%;background:radial-gradient(circle,#fff3d6,#ffd27a 60%,transparent 62%);filter:blur(.5px);animation:sun 10s ease-in-out infinite}
+.hills{position:absolute;inset:auto -10% -5% -10%;height:50%;background:radial-gradient(60% 100% at 30% 100%,#1b0f24 60%,transparent 61%),radial-gradient(60% 90% at 80% 100%,#2a1433 60%,transparent 61%)}
+@keyframes scene{50%{background-position:100% 50%}}
+@keyframes sun{50%{transform:translateY(12%)}}
+.ctrl{position:absolute;inset:auto 0 0 0;padding:10px 12px;display:flex;align-items:center;gap:10px;background:linear-gradient(transparent,#000a)}
+.ctrl .pl{width:0;height:0;border-block:7px solid transparent;border-inline-start:11px solid #fff}
+html[dir=rtl] .ctrl .pl{border-inline-start:11px solid #fff}
+.ctrl .tr{flex:1;height:4px;border-radius:2px;background:#fff4;overflow:hidden}
+.ctrl .tr i{display:block;height:100%;width:0;background:var(--coral)}
+.ctrl span{font:11px var(--mono);color:#fff}
+.net{margin:0 14px 14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;font:11.5px/1.6 var(--mono);height:150px;overflow:hidden;direction:ltr;text-align:left}
+.net .h{display:grid;grid-template-columns:1fr 70px 70px;gap:10px;padding:6px 12px;border-bottom:1px solid var(--line);color:var(--dim);text-transform:uppercase;font-size:10px;letter-spacing:.1em}
+.net .rows{padding:4px 0}
+.net .r{display:grid;grid-template-columns:1fr 70px 70px;gap:10px;padding:2px 12px;color:var(--mut);animation:in .3s}
+.net .r span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.net .r.hit{color:var(--fg);background:linear-gradient(90deg,rgba(255,79,109,.18),transparent)}
+.net .r.hit span:first-child:before{content:"● ";color:var(--coral)}
+@keyframes in{from{opacity:0;transform:translateY(4px)}}
+/* popup (mirrors popup.html) */
+.pop{position:absolute;top:50px;right:-18px;width:330px;max-width:calc(100% - 20px);background:#0b1220;border:1px solid #1e3a5f;border-radius:14px;box-shadow:0 30px 70px -10px #000,0 0 0 1px #38bdf833;color:#e2e8f0;opacity:0;transform:translateY(-8px) scale(.97);transform-origin:top right;transition:all .3s cubic-bezier(.2,.8,.2,1);pointer-events:none;z-index:5;overflow:hidden}
+html[dir=rtl] .pop{transform-origin:top left;right:auto;left:-18px}html[dir=rtl] .pop:before{right:auto;left:38px}
+.pop.show{opacity:1;transform:none;pointer-events:auto}
+.pop:before{content:"";position:absolute;top:-7px;right:38px;width:12px;height:12px;background:#0b1220;border-left:1px solid #1e3a5f;border-top:1px solid #1e3a5f;transform:rotate(45deg)}
+.pop .ph{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #1e293b}
+.pop .ph .lg{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#0284c7,#38bdf8);display:grid;place-items:center}
+.pop .ph b{font-size:13px;display:block}
+.pop .ph small{font-size:10.5px;color:#38bdf8;background:#38bdf81a;border-radius:999px;padding:1px 8px}
+.pop .info{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;font-size:12px;color:#94a3b8;background:#0f172a}
+.pop .info i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+.pop .list{padding:10px;display:grid;gap:8px;max-height:270px;overflow:hidden}
+.vc{background:#111c2e;border:1px solid #1e3a5f;border-radius:10px;padding:10px;animation:in .35s}
+.vc .t{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:700;align-items:center}
+.vc .t span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:ltr;font-family:var(--mono);font-weight:500}
+.vc .tag{font:700 10px var(--mono);color:#38bdf8;background:#38bdf81a;border:1px solid #38bdf844;border-radius:6px;padding:1px 6px;flex:none}
+.vc .m{display:flex;justify-content:space-between;font-size:11px;color:#94a3b8;margin:5px 0 8px}
+.vc .a{display:flex;gap:6px}
+.vc .a button{flex:1;border-radius:8px;font:700 11.5px var(--sans);padding:7px;cursor:pointer;border:1px solid #334155;background:none;color:#e2e8f0}
+html[data-lang=fa] .vc .a button{font-family:var(--fa)}
+.vc .a button.d{background:linear-gradient(135deg,#0284c7,#38bdf8);border:0;color:#fff}
+.pop .ft{padding:8px 14px 12px;font-size:10.5px;color:#64748b;text-align:center}
+.toast{position:absolute;inset-inline-start:50%;bottom:20px;transform:translate(-50%,20px);background:var(--fg);color:var(--bg);font:700 13px var(--sans);padding:9px 16px;border-radius:999px;opacity:0;transition:all .3s;white-space:nowrap;z-index:6}
+html[dir=rtl] .toast{transform:translate(50%,20px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}html[dir=rtl] .toast.show{transform:translate(50%,0)}
+html[data-lang=fa] .toast{font-family:var(--fa)}
+.replay{position:absolute;bottom:-46px;inset-inline-end:0;background:none;border:1px solid var(--line2);color:var(--mut);border-radius:999px;font:700 12px var(--sans);padding:6px 14px;cursor:pointer}
+/* sections */
+section{padding:100px 0;position:relative}
+.label{font:700 11px var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--coral)}
+html[data-lang=fa] .label{letter-spacing:0;font-family:var(--fa);font-size:14px}
+h2{font-size:clamp(30px,3.8vw,50px);line-height:1.05;letter-spacing:-.03em;margin:12px 0 16px;font-weight:900}
+html[data-lang=fa] h2{letter-spacing:0;line-height:1.4}
+.sub{color:var(--mut);font-size:17px;max-width:660px;margin:0 0 50px}
+.reel{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line2);border-radius:16px;overflow:hidden;background:var(--panel)}
+.reel>*{min-width:0}
+.frame{padding:30px 28px;border-inline-end:1px solid var(--line2);position:relative}
+.frame:last-child{border-inline-end:0}
+.frame .n{font:800 12px var(--mono);color:var(--dim);letter-spacing:.2em}
+.frame .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;margin:16px 0;font-size:24px;background:var(--panel2);border:1px solid var(--line2)}
+.frame h3{margin:0 0 8px;font-size:20px}
+.frame p{margin:0;color:var(--mut);font-size:15px}
+.frame code{color:var(--peach)}
+.fmts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.fmts>*{min-width:0}
+.fm{border:1px solid var(--line2);border-radius:14px;padding:20px 16px;background:linear-gradient(180deg,var(--panel),var(--bg));text-align:center}
+.fm b{display:block;font:900 26px var(--mono);letter-spacing:-.02em}
+.fm span{display:block;color:var(--mut);font-size:13px;margin-top:6px}
+.fm.hl b{color:var(--coral)}.fm.hl2 b{color:var(--lilac)}.fm.hl3 b{color:var(--gold)}
+.fnote{margin-top:22px;color:var(--mut);font-size:15px;border-inline-start:3px solid var(--lilac);padding:6px 16px;background:rgba(182,156,255,.06);border-radius:4px}
+.fnote code{color:var(--lilac)}
+.priv{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:start}
+.priv>*{min-width:0}
+.big0{font:900 clamp(80px,12vw,150px)/1 var(--sans);letter-spacing:-.06em;background:linear-gradient(180deg,var(--fg),var(--dim));-webkit-background-clip:text;background-clip:text;color:transparent}
+.perm{border:1px solid var(--line2);border-radius:14px;overflow:hidden}
+.perm div{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px}
+.perm div:last-child{border-bottom:0}
+.perm code{color:var(--peach);direction:ltr;text-align:start}
+.perm span{color:var(--mut)}
+/* install */
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.steps>*{min-width:0}
+.st{border:1px solid var(--line2);border-radius:14px;padding:22px;background:var(--panel);position:relative;counter-increment:s}
+.st:before{content:counter(s);font:900 46px/1 var(--mono);color:transparent;-webkit-text-stroke:1.5px var(--coral);display:block;margin-bottom:12px}
+.st h3{margin:0 0 6px;font-size:17px}
+.st p{margin:0;color:var(--mut);font-size:14.5px}
+.cmd{display:flex;align-items:center;gap:8px;margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 6px 6px 12px;direction:ltr}
+.cmd code{flex:1;min-width:0;overflow-x:auto;white-space:nowrap;font-size:12px}
+.copy{background:var(--panel2);border:1px solid var(--line2);color:var(--mut);font:600 11px var(--sans);padding:5px 9px;border-radius:6px;cursor:pointer;flex:none}
+.copy.ok{color:var(--ok);border-color:var(--ok)}
+.brs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.brs button{background:var(--bg);border:1px solid var(--line);color:var(--peach);font:12px var(--mono);border-radius:6px;padding:4px 8px;cursor:pointer}
+.brs button.ok{color:var(--ok);border-color:var(--ok)}
+/* faq */
+.faq{max-width:860px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:20px 0;font-weight:800;font-size:17px;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"";width:12px;height:12px;border-inline-end:2px solid var(--coral);border-bottom:2px solid var(--coral);transform:rotate(45deg);transition:transform .2s;flex:none;margin-top:4px}
+details[open] summary:after{transform:rotate(-135deg)}
+details p{margin:0 0 20px;color:var(--mut)}
+.legal{margin-top:40px;border:1px solid rgba(255,79,109,.4);background:rgba(255,79,109,.06);border-radius:14px;padding:20px 22px;color:var(--mut);font-size:15px}
+.legal b{color:var(--fg)}
+.credits{text-align:center;padding:90px 0 70px}
+.credits .label{display:block;margin-bottom:12px}
+.credits h2{font-size:clamp(34px,5vw,64px)}
+.credits .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--dim);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+footer a{color:var(--mut)}
+@media (max-width:980px){.hero .wrap,.priv{grid-template-columns:minmax(0,1fr)}.reel{grid-template-columns:minmax(0,1fr)}.frame{border-inline-end:0;border-bottom:1px solid var(--line2)}.fmts{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.pop{right:10px}html[dir=rtl] .pop{left:10px}}
+@media (max-width:640px){.top nav a.h,.gh{display:none}.brand span.long{display:none}.hero{padding:40px 0 90px}section{padding:70px 0}.fmts{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:minmax(0,1fr)}.perm div{grid-template-columns:minmax(0,1fr);gap:2px}.net{font-size:10.5px}.net .h,.net .r{grid-template-columns:minmax(0,1fr) 54px 58px;gap:6px}.pop{top:46px;width:auto;left:10px!important;right:10px!important}}
+@media (prefers-reduced-motion:reduce){body:after,.scene,.sun{animation:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#"><img src="favicon.svg" alt="">Super Video <span class="long">Downloader</span></a>
+  <nav>
+    <a class="h" href="#how"><span lang="en">How it works</span><span lang="fa">طرز کار</span></a>
+    <a class="h" href="#privacy"><span lang="en">Privacy</span><span lang="fa">حریم خصوصی</span></a>
+    <a href="#install"><span lang="en">Install</span><span lang="fa">نصب</span></a>
+    <a class="h" href="#faq"><span lang="en">FAQ</span><span lang="fa">پرسش‌ها</span></a>
+    <a class="gh" href="https://github.com/mrzroot/universal-video-downloader">GitHub</a>
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="fa">فا</button></div>
+  </nav>
+</div></header>
+<div class="strip" aria-hidden="true"></div>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="slate"><span>MV3</span><span lang="en">Chrome · Edge · Brave</span><span lang="fa">کروم · اج · بریو</span></div>
+    <h1><span lang="en">Press play.<br><span class="g">Catch the real stream.</span></span><span lang="fa">پخش را بزنید.<br><span class="g">استریم واقعی را شکار کنید.</span></span></h1>
+    <p class="lead"><span lang="en">Super Video Downloader watches the page's network traffic and video tags, spots <b>MP4, WebM, HLS (m3u8) and DASH</b> streams, and lists them in one popup so you can save the original file or copy its link. Everything happens inside your browser.</span><span lang="fa">Super Video Downloader ترافیک شبکه و تگ‌های ویدیوی صفحه را زیر نظر می‌گیرد، استریم‌های <b>MP4، WebM، HLS (m3u8) و DASH</b> را پیدا می‌کند و در یک پنجره فهرست می‌کند تا فایل اصلی را ذخیره یا لینکش را کپی کنید. همه‌چیز داخل مرورگر خودتان انجام می‌شود.</span></p>
+    <div class="cta">
+      <a class="btn p" href="#install"><span lang="en">Install in 1 minute</span><span lang="fa">نصب در ۱ دقیقه</span></a>
+      <a class="btn" href="https://github.com/mrzroot/universal-video-downloader">GitHub</a>
+    </div>
+    <div class="chips"><span>webRequest</span><span>content script</span><span>chrome.downloads</span><span>MIT</span></div>
+  </div>
+
+  <div class="br" id="demo">
+    <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><div class="url">https://video.example/watch/sunset-timelapse</div>
+      <button class="ext" type="button" id="ext" aria-label="Open extension popup"><img src="ext-icon.png" alt=""><b id="badge">0</b></button></div>
+    <div class="vp"><div class="scene"><div class="sun"></div><div class="hills"></div></div>
+      <div class="ctrl"><i class="pl"></i><span class="tr"><i id="prog"></i></span><span id="tc">0:00</span></div></div>
+    <div class="net"><div class="h"><span>request</span><span>type</span><span>size</span></div><div class="rows" id="net"></div></div>
+    <div class="pop" id="pop" dir="rtl">
+      <div class="ph"><span class="lg">⚡</span><div><b>Super Video Downloader</b><small>۱۰۰٪ نامحدود و رایگان</small></div></div>
+      <div class="info"><span id="pinfo"></span><i></i></div>
+      <div class="list" id="plist"></div>
+      <div class="ft">بدون واترمارک • بدون محدودیت حجم • HLS / MP4</div>
+    </div>
+    <div class="toast" id="toast"></div>
+    <button class="replay" type="button" id="replay">↻ <span lang="en">Replay demo</span><span lang="fa">پخش دوباره</span></button>
+  </div>
+</div></section>
+<div class="strip" aria-hidden="true"></div>
+
+<section id="how"><div class="wrap">
+  <div class="label"><span lang="en">Behind the scenes</span><span lang="fa">پشت صحنه</span></div>
+  <h2><span lang="en">Three parts, one reel.</span><span lang="fa">سه بخش، یک حلقهٔ فیلم.</span></h2>
+  <p class="sub"><span lang="en">A small Manifest V3 extension: about 850 lines of plain JavaScript, no build step and no dependencies.</span><span lang="fa">یک افزونهٔ کوچک Manifest V3: حدود ۸۵۰ خط جاوااسکریپت ساده، بدون مرحلهٔ بیلد و بدون وابستگی.</span></p>
+  <div class="reel">
+    <div class="frame"><span class="n">SCENE 01</span><div class="ic">📡</div><h3><span lang="en">Network sniffer</span><span lang="fa">شنود شبکه</span></h3><p><span lang="en">The service worker reads response headers via <code>webRequest</code>. A matching extension or <code>Content-Type</code> marks it as video, and <code>Content-Length</code> gives the size.</span><span lang="fa">سرویس‌ورکر هدرهای پاسخ را با <code>webRequest</code> می‌خواند. پسوند یا <code>Content-Type</code> منطبق یعنی ویدیو، و <code>Content-Length</code> حجم را می‌دهد.</span></p></div>
+    <div class="frame"><span class="n">SCENE 02</span><div class="ic">🔍</div><h3><span lang="en">Page scanner</span><span lang="fa">اسکنر صفحه</span></h3><p><span lang="en">A content script checks <code>&lt;video&gt;</code>, <code>&lt;source&gt;</code> and direct .mp4/.m3u8 links on load, then again at 2 s and 5 s for players that load late.</span><span lang="fa">یک کانتنت‌اسکریپت تگ‌های <code>&lt;video&gt;</code> و <code>&lt;source&gt;</code> و لینک‌های مستقیم ‎.mp4/.m3u8 را هنگام بارگذاری و دوباره در ثانیهٔ ۲ و ۵ بررسی می‌کند.</span></p></div>
+    <div class="frame"><span class="n">SCENE 03</span><div class="ic">🎬</div><h3><span lang="en">Popup &amp; downloads</span><span lang="fa">پنجره و دانلود</span></h3><p><span lang="en">The toolbar badge counts what was found for each tab. The Persian RTL popup shows format and size, then downloads through <code>chrome.downloads</code> with a Save As dialog or copies the link.</span><span lang="fa">نشان روی آیکون تعداد یافته‌های هر تب را می‌شمارد. پنجرهٔ فارسی قالب و حجم را نشان می‌دهد و با <code>chrome.downloads</code> و پنجرهٔ «ذخیره به‌عنوان» دانلود می‌کند یا لینک را کپی می‌کند.</span></p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="label"><span lang="en">What it recognises</span><span lang="fa">چه چیزهایی را می‌شناسد</span></div>
+  <h2><span lang="en">Formats on the call sheet.</span><span lang="fa">قالب‌های فهرست بازیگران.</span></h2>
+  <div class="fmts">
+    <div class="fm hl"><b>MP4</b><span lang="en">progressive video</span><span lang="fa">ویدیوی پیوسته</span></div>
+    <div class="fm"><b>WebM</b><span lang="en">VP8/VP9/AV1</span><span lang="fa">VP8/VP9/AV1</span></div>
+    <div class="fm hl2"><b>m3u8</b><span lang="en">HLS playlists</span><span lang="fa">پلی‌لیست HLS</span></div>
+    <div class="fm hl3"><b>mpd</b><span lang="en">DASH manifests</span><span lang="fa">مانیفست DASH</span></div>
+    <div class="fm"><b>TS</b><span lang="en">MPEG-TS segments</span><span lang="fa">قطعه‌های MPEG-TS</span></div>
+    <div class="fm"><b>MKV</b><span lang="en">Matroska</span><span lang="fa">ماتروسکا</span></div>
+    <div class="fm"><b>MOV</b><span lang="en">QuickTime</span><span lang="fa">کوئیک‌تایم</span></div>
+    <div class="fm"><b>FLV</b><span lang="en">Flash video</span><span lang="fa">ویدیوی فلش</span></div>
+    <div class="fm"><b>M4V</b><span lang="en">MPEG-4 video</span><span lang="fa">ویدیوی MPEG-4</span></div>
+    <div class="fm"><b>AVI</b><span lang="en">legacy files</span><span lang="fa">فایل‌های قدیمی</span></div>
+  </div>
+  <p class="fnote"><span lang="en">Direct files (MP4, WebM…) download as-is, at the source quality with no re-encoding. For HLS and DASH the extension finds the <b>playlist</b>: copy its link into a tool such as <code>ffmpeg -i "URL" -c copy out.mp4</code> to merge the segments.</span><span lang="fa">فایل‌های مستقیم (MP4، WebM و…) همان‌طور که هستند و با کیفیت منبع و بدون فشرده‌سازی دوباره دانلود می‌شوند. برای HLS و DASH افزونه <b>پلی‌لیست</b> را پیدا می‌کند؛ لینکش را کپی کنید و با ابزاری مثل <code>ffmpeg -i "URL" -c copy out.mp4</code> قطعه‌ها را یکی کنید.</span></p>
+</div></section>
+
+<section id="privacy" style="background:var(--bg2);border-block:1px solid var(--line)"><div class="wrap priv">
+  <div>
+    <div class="label"><span lang="en">Privacy</span><span lang="fa">حریم خصوصی</span></div>
+    <div class="big0">0</div>
+    <h2 style="margin-top:0"><span lang="en">servers involved.</span><span lang="fa">سرور در کار نیست.</span></h2>
+    <p class="sub" style="margin-bottom:0"><span lang="en">No proxy, no analytics, no account. The list of found streams lives in memory per tab and is cleared when you navigate or close the tab.</span><span lang="fa">بدون پروکسی، بدون آنالیتیکس و بدون حساب کاربری. فهرست استریم‌ها برای هر تب در حافظه نگه داشته می‌شود و با رفتن به صفحهٔ دیگر یا بستن تب پاک می‌شود.</span></p>
+  </div>
+  <div class="perm">
+    <div><code>webRequest</code><span lang="en">Read response headers to spot video files.</span><span lang="fa">خواندن هدر پاسخ‌ها برای تشخیص فایل‌های ویدیویی.</span></div>
+    <div><code>&lt;all_urls&gt;</code><span lang="en">Videos can come from any CDN, so headers are checked on every host.</span><span lang="fa">ویدیو ممکن است از هر CDN بیاید، پس هدرها در همهٔ میزبان‌ها بررسی می‌شوند.</span></div>
+    <div><code>downloads</code><span lang="en">Hand a chosen file to the browser's own downloader.</span><span lang="fa">سپردن فایل انتخاب‌شده به دانلودر خود مرورگر.</span></div>
+    <div><code>activeTab · scripting</code><span lang="en">Scan the current page's video tags.</span><span lang="fa">اسکن تگ‌های ویدیوی صفحهٔ فعلی.</span></div>
+    <div><code>storage</code><span lang="en">Local extension storage only.</span><span lang="fa">فقط فضای ذخیره‌سازی محلی افزونه.</span></div>
+  </div>
+</div></section>
+
+<section id="install"><div class="wrap">
+  <div class="label"><span lang="en">Install</span><span lang="fa">نصب</span></div>
+  <h2><span lang="en">Rolling in under a minute.</span><span lang="fa">در کمتر از یک دقیقه آماده.</span></h2>
+  <p class="sub"><span lang="en">It isn't in the Chrome Web Store, so you load it unpacked. Works in any Chromium browser with Manifest V3.</span><span lang="fa">در Chrome Web Store نیست، پس به‌صورت «بسته بازنشده» بارگذاری می‌شود. در هر مرورگر کرومیومی با Manifest V3 کار می‌کند.</span></p>
+  <div class="steps">
+    <div class="st"><h3><span lang="en">Get the code</span><span lang="fa">دریافت کد</span></h3><p><span lang="en">Clone the repo, or download the ZIP and unzip it.</span><span lang="fa">مخزن را کلون کنید یا ZIP را دانلود و باز کنید.</span></p>
+      <div class="cmd"><code id="c1">git clone https://github.com/mrzroot/universal-video-downloader.git</code><button class="copy" type="button" data-copy="c1">Copy</button></div></div>
+    <div class="st"><h3><span lang="en">Open extensions</span><span lang="fa">باز کردن افزونه‌ها</span></h3><p><span lang="en">Paste into the address bar (click to copy):</span><span lang="fa">در نوار آدرس بچسبانید (برای کپی کلیک کنید):</span></p>
+      <div class="brs"><button type="button" data-cp="chrome://extensions">chrome://extensions</button><button type="button" data-cp="edge://extensions">edge://extensions</button><button type="button" data-cp="brave://extensions">brave://extensions</button></div></div>
+    <div class="st"><h3><span lang="en">Developer mode → Load unpacked</span><span lang="fa">حالت توسعه‌دهنده ← Load unpacked</span></h3><p><span lang="en">Turn on Developer mode (top right), click <b>Load unpacked</b> and pick the <code>universal-video-downloader</code> folder that contains <code>manifest.json</code>.</span><span lang="fa">Developer mode را (بالا سمت راست) روشن کنید، <b>Load unpacked</b> را بزنید و پوشهٔ <code>universal-video-downloader</code> را که <code>manifest.json</code> دارد انتخاب کنید.</span></p></div>
+    <div class="st"><h3><span lang="en">Pin &amp; play</span><span lang="fa">پین کنید و پخش کنید</span></h3><p><span lang="en">Pin the icon, open a page and start the video. The badge shows what was found; click it to save or copy.</span><span lang="fa">آیکون را پین کنید، صفحه را باز و ویدیو را پخش کنید. نشان روی آیکون تعداد یافته‌ها را نشان می‌دهد؛ برای ذخیره یا کپی روی آن بزنید.</span></p></div>
+  </div>
+</div></section>
+
+<section id="faq" style="background:var(--bg2);border-top:1px solid var(--line)"><div class="wrap faq">
+  <div class="label"><span lang="en">FAQ</span><span lang="fa">پرسش‌های رایج</span></div>
+  <h2><span lang="en">Director's commentary.</span><span lang="fa">توضیحات کارگردان.</span></h2>
+  <details><summary><span lang="en">Why doesn't it find the video on some sites?</span><span lang="fa">چرا در بعضی سایت‌ها ویدیو پیدا نمی‌شود؟</span></summary><p><span lang="en">Start playback first, because many players only request the stream then. Sites that use DRM (Widevine/PlayReady), or feed the player through <code>blob:</code> URLs and MediaSource, don't expose a downloadable file. The extension skips them by design.</span><span lang="fa">اول ویدیو را پخش کنید؛ بسیاری از پلیرها فقط در آن لحظه استریم را درخواست می‌کنند. سایت‌هایی که DRM (مثل Widevine/PlayReady) دارند یا ویدیو را با آدرس‌های <code>blob:</code> و MediaSource پخش می‌کنند فایل قابل دانلودی ارائه نمی‌دهند و افزونه عمداً سراغشان نمی‌رود.</span></p></details>
+  <details><summary><span lang="en">I downloaded an .m3u8 and it's tiny. Why?</span><span lang="fa">یک ‎.m3u8 دانلود کردم و خیلی کوچک است. چرا؟</span></summary><p><span lang="en">An m3u8 is a playlist that points to many small segments, not the video itself. Copy the link and merge it with ffmpeg or a similar tool.</span><span lang="fa">m3u8 یک پلی‌لیست است که به قطعه‌های کوچک زیادی اشاره می‌کند، نه خود ویدیو. لینک را کپی و با ffmpeg یا ابزار مشابه یکی کنید.</span></p></details>
+  <details><summary><span lang="en">Does it work in Firefox or Safari?</span><span lang="fa">در فایرفاکس یا سافاری کار می‌کند؟</span></summary><p><span lang="en">It's built and tested for Chromium browsers (Chrome, Edge, Brave and others). Firefox and Safari aren't supported.</span><span lang="fa">برای مرورگرهای کرومیومی (کروم، اج، بریو و…) ساخته و آزموده شده است. فایرفاکس و سافاری پشتیبانی نمی‌شوند.</span></p></details>
+  <details><summary><span lang="en">Is it in the Chrome Web Store?</span><span lang="fa">در Chrome Web Store هست؟</span></summary><p><span lang="en">No. Install it from source with Load unpacked. Chrome may show a reminder about developer-mode extensions, which is normal.</span><span lang="fa">نه. از سورس و با Load unpacked نصبش کنید. ممکن است کروم دربارهٔ افزونه‌های حالت توسعه‌دهنده یادآوری نشان دهد که طبیعی است.</span></p></details>
+  <details><summary><span lang="en">Does it send my browsing anywhere?</span><span lang="fa">تاریخچهٔ مرور من را جایی می‌فرستد؟</span></summary><p><span lang="en">No. There is no server component. You can read all of it in about 850 lines on GitHub.</span><span lang="fa">نه. هیچ بخش سروری ندارد. همهٔ کد را در حدود ۸۵۰ خط در گیت‌هاب می‌توانید بخوانید.</span></p></details>
+  <div class="legal"><span lang="en"><b>Use it responsibly.</b> Only download videos you own, that are openly licensed, or that you have permission to save. Respect each site's terms and copyright law. This tool doesn't bypass DRM or paywalls.</span><span lang="fa"><b>مسئولانه استفاده کنید.</b> فقط ویدیوهایی را دانلود کنید که مالکشان هستید، مجوز آزاد دارند یا اجازهٔ ذخیره‌شان را دارید. قوانین هر سایت و حق نشر را رعایت کنید. این ابزار DRM یا دیوار پرداخت را دور نمی‌زند.</span></div>
+</div></section>
+
+<section class="credits"><div class="wrap">
+  <span class="label">THE END · <span lang="en">roll credits</span><span lang="fa">تیتراژ پایانی</span></span>
+  <h2><span lang="en">Your next download<br>is one click away.</span><span lang="fa">دانلود بعدی شما<br>یک کلیک فاصله دارد.</span></h2>
+  <div class="cta"><a class="btn p" href="#install"><span lang="en">Install</span><span lang="fa">نصب</span></a><a class="btn" href="https://github.com/mrzroot/universal-video-downloader">★ GitHub</a></div>
+</div></section>
+</main>
+<div class="strip" aria-hidden="true"></div>
+<footer><div class="wrap">
+  <span>Super Video Downloader · MIT · <span lang="en">by</span><span lang="fa">ساختهٔ</span> <a href="https://mrzroot.github.io/">M-R-Z (@mrzroot)</a></span>
+  <span><a href="https://mrzroot.github.io/projects/"><span lang="en">More projects</span><span lang="fa">پروژه‌های دیگر</span></a> · <a href="https://github.com/mrzroot/universal-video-downloader/issues"><span lang="en">Issues</span><span lang="fa">گزارش مشکل</span></a></span>
+</div></footer>
+
+<script>
+(function(){
+  var R=document.documentElement,$=function(s){return document.querySelector(s)},$$=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))};
+  var TITLES={en:'Super Video Downloader · Find the real video stream on any page',fa:'Super Video Downloader · استریم واقعی ویدیو را در هر صفحه پیدا کنید'};
+  var lang='en';
+  function setLang(l,save){lang=l;R.setAttribute('data-lang',l);R.lang=l;R.dir=l==='fa'?'rtl':'ltr';document.title=TITLES[l];
+    $$('[data-set-lang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-set-lang')===l))});
+    if(save)try{localStorage.setItem('mrz-lang',l)}catch(e){}}
+  setLang(R.getAttribute('data-lang')||'en');
+  $$('[data-set-lang]').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-set-lang'),true)})});
+  function cp(t,b){if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){b.classList.add('ok');setTimeout(function(){b.classList.remove('ok')},1300)})}
+  $$('[data-copy]').forEach(function(b){b.onclick=function(){cp(document.getElementById(b.getAttribute('data-copy')).textContent,b)}});
+  $$('[data-cp]').forEach(function(b){b.onclick=function(){cp(b.getAttribute('data-cp'),b)}});
+
+  /* demo: mimics background.js matching + popup.html layout */
+  var REQ=[['watch/sunset-timelapse','document','38 KB',0],['player.min.js','script','212 KB',0],['styles.css','stylesheet','24 KB',0],['poster.jpg','image','96 KB',0],
+    ['hls/master.m3u8','mpegurl','2 KB',1,'HLS (m3u8)'],['analytics.js','script','11 KB',0],['hls/720p/seg-001.ts','video/mp2t','1.9 MB',0],
+    ['media/sunset_1080p.mp4','video/mp4','48.2 MB',1,'MP4'],['hls/720p/seg-002.ts','video/mp2t','1.9 MB',0],['media/sunset_720p.webm','video/webm','21.7 MB',1,'WebM'],['hls/720p/seg-003.ts','video/mp2t','1.8 MB',0]];
+  var net=$('#net'),badge=$('#badge'),pop=$('#pop'),found=[],timers=[],run=0;
+  function T(f,ms){timers.push(setTimeout(f,ms))}
+  function fa(n){return String(n).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]})}
+  function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},1800)}
+  function renderPop(){$('#pinfo').textContent=found.length?fa(found.length)+' ویدیوی آماده دانلود پیدا شد':'در حال جستجوی ویدیوها...';
+    var h='';found.forEach(function(v){var nm=v[0].split('/').pop();h+='<div class="vc"><div class="t"><span>'+nm+'</span><span class="tag">'+v[4]+'</span></div><div class="m"><span>حجم: '+(v[4].indexOf('HLS')===0?'نامشخص':v[2])+'</span><span>کیفیت: اصلی (HD)</span></div><div class="a"><button class="d" type="button">⬇️ دانلود فایل</button><button type="button">📋 کپی لینک</button></div></div>'});
+    $('#plist').innerHTML=h;
+    $$('#plist .vc').forEach(function(c,i){var b=c.querySelectorAll('button');
+      b[0].onclick=function(){b[0].textContent='⏳ در حال دانلود...';setTimeout(function(){b[0].textContent='✅ شروع شد'},1200);toast(lang==='fa'?'«ذخیره به‌عنوان» باز شد: '+found[i][0].split('/').pop():'Save As… '+found[i][0].split('/').pop())};
+      b[1].onclick=function(){var o=b[1].textContent;b[1].textContent='✅ کپی شد!';setTimeout(function(){b[1].textContent=o},1300);if(navigator.clipboard)navigator.clipboard.writeText('https://video.example/'+found[i][0]).catch(function(){})}})}
+  function play(){timers.forEach(clearTimeout);timers=[];found=[];net.innerHTML='';badge.textContent='0';badge.classList.remove('show');pop.classList.remove('show');$('#ext').classList.remove('on');renderPop();
+    var my=++run,t0=Date.now(),pr=$('#prog'),tc=$('#tc');
+    (function tick(){if(my!==run)return;var s=(Date.now()-t0)/1000;pr.style.width=Math.min(100,s/14*100)+'%';tc.textContent='0:'+('0'+Math.floor(s%60)).slice(-2);if(s<14)requestAnimationFrame(tick)})();
+    REQ.forEach(function(r,i){T(function(){var d=document.createElement('div');d.className='r'+(r[3]?' hit':'');d.innerHTML='<span>'+r[0]+'</span><span>'+r[1].replace('application/','')+'</span><span>'+r[2]+'</span>';net.appendChild(d);
+      while(net.children.length>6)net.removeChild(net.firstChild);
+      if(r[3]){found.push(r);badge.textContent=found.length;badge.classList.remove('show');void badge.offsetWidth;badge.classList.add('show');renderPop()}},500+i*420)});
+    T(function(){pop.classList.add('show');$('#ext').classList.add('on')},500+REQ.length*420+300)}
+  $('#ext').onclick=function(){var on=pop.classList.toggle('show');$('#ext').classList.toggle('on',on)};
+  $('#replay').onclick=play;
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();play()}},{threshold:.35}):null;
+  io?io.observe($('#demo')):play();
+})();
+</script>
+</body>
+</html>

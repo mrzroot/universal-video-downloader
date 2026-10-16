@@ -2,11 +2,13 @@
 <html lang="en" data-lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
+<script>/*mrz-theme*/(function(){var d=document.documentElement,m='system';try{m=localStorage.getItem('mrz-theme')||'system'}catch(e){}var q=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;var t=m==='light'||m==='dark'?m:(q&&q.matches?'dark':'light');d.setAttribute('data-theme',t);d.style.colorScheme=t})()</script>
+<meta name="theme-color" content="#f7f5ef">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Super Video Downloader · Find the real video stream on any page</title>
 <meta name="description" content="A Manifest V3 extension for Chrome, Edge and Brave that sniffs MP4, WebM, HLS (m3u8) and DASH streams from network traffic and video tags, then lets you save or copy them. Runs entirely in your browser. MIT.">
-<meta name="theme-color" content="#09080d">
-<meta name="color-scheme" content="dark">
+
+<meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Super Video Downloader · دانلودر ویدیو">
 <meta property="og:description" content="Sniff the real video stream on a page and save it. Chromium MV3 extension, 100% client-side.">
 <meta property="og:type" content="website">
@@ -184,6 +186,44 @@ footer a{color:var(--mut)}
 @media (max-width:640px){.top nav a.h,.gh{display:none}.brand span.long{display:none}.hero{padding:40px 0 90px}section{padding:70px 0}.fmts{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:minmax(0,1fr)}.perm div{grid-template-columns:minmax(0,1fr);gap:2px}.net{font-size:10.5px}.net .h,.net .r{grid-template-columns:minmax(0,1fr) 54px 58px;gap:6px}.pop{top:46px;width:auto;left:10px!important;right:10px!important}}
 @media (prefers-reduced-motion:reduce){body:after,.scene,.sun{animation:none}}
 </style>
+<style id="mrz-theme-css">
+/* mrz theme toggle */
+.mrz-tt{all:unset;box-sizing:border-box;cursor:pointer;display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:999px;color:inherit;border:1.5px solid currentColor;transition:transform .2s,background-color .2s}
+.mrz-tt:hover{transform:rotate(-12deg)}.mrz-tt:focus-visible{outline:2px solid #1fb5ad;outline-offset:3px}
+.mrz-tt svg{width:17px;height:17px;display:block}
+html[data-theme=dark] .mrz-tt .i-moon,html:not([data-theme=dark]) .mrz-tt .i-sun{display:none}
+/* Universal Video Downloader · cinema coral kept as the brand accent, surfaces on the turquoise + gold palette */
+html[data-theme=dark]{--bg:#070b1a;--bg2:#0b1124;--panel:#0e1428;--panel2:#121a33;--line:#1c2645;--line2:#2a3560;--fg:#eceff7;--mut:#a9b1cc;--dim:#8089a8;
+--coral:#ff6680;--peach:#ffab8c;--lilac:#c0abff;--gold:#e8b04b;--sky:#3fd0c9;--ok:#5fd6a0;--on-coral:#1a0610;--strip:#04060f;--strip-line:#1c2645}
+html[data-theme=light]{--bg:#f7f5ef;--bg2:#efeadc;--panel:#fffdf8;--panel2:#f4f0e5;--line:#e3ddcc;--line2:#d3cab3;--fg:#0b1230;--mut:#3a4363;--dim:#5b6383;
+--coral:#c0264a;--peach:#a8431f;--lilac:#6a46c9;--gold:#8a5c0c;--sky:#0a7671;--ok:#0b7a4f;--on-coral:#fff;--strip:#e3ddcc;--strip-line:#d3cab3;color-scheme:light}
+html[data-theme] .lang button[aria-pressed=true],html[data-theme] .btn.p{color:var(--on-coral)}
+html[data-theme] .strip{background-color:var(--strip);border-color:var(--strip-line)}
+html[data-theme=dark] .top{background:rgba(7,11,26,.8)}
+html[data-theme=light] .top{background:rgba(247,245,239,.86)}
+html[data-theme=light] .hero:before{background:radial-gradient(circle,rgba(192,38,74,.12),transparent 60%)}
+html[data-theme=light] .hero:after{background:radial-gradient(circle,rgba(31,181,173,.14),transparent 60%)}
+html[data-theme=light] .btn.p{box-shadow:0 10px 34px -12px rgba(192,38,74,.55)}
+html[data-theme=light] .br{box-shadow:0 50px 100px -50px rgba(11,18,48,.35),0 0 0 1px rgba(11,18,48,.04) inset}
+html[data-theme=light] .dots i{background:#d3cab3}
+html[data-theme=light] .ext.on{background:rgba(31,181,173,.16)}
+html[data-theme=light] .net .r.hit{background:linear-gradient(90deg,rgba(192,38,74,.1),transparent)}
+html[data-theme=light] h1 .g{background:linear-gradient(95deg,#c0264a,#a8431f 50%,#8a5c0c);-webkit-background-clip:text;background-clip:text}
+html[data-theme=light] .fnote{background:rgba(106,70,201,.06)}
+html[data-theme=light] .legal{border-color:rgba(192,38,74,.35);background:rgba(192,38,74,.05)}
+/* extension popup mock follows the theme too */
+html[data-theme] .ext b{background:#0369a1}
+html[data-theme] .pop .ft{color:#8d9bb3}
+html[data-theme=light] .pop{background:#fffdf8;border-color:#d3cab3;color:#0b1230;box-shadow:0 30px 70px -20px rgba(11,18,48,.3),0 0 0 1px rgba(10,118,113,.18)}
+html[data-theme=light] .pop:before{background:#fffdf8;border-color:#d3cab3}
+html[data-theme=light] .pop .ph{border-color:#e3ddcc}
+html[data-theme=light] .pop .ph small,html[data-theme=light] .vc .tag{color:#0369a1;background:rgba(3,105,161,.08)}
+html[data-theme=light] .pop .info{color:#3a4363;background:#f4f0e5}
+html[data-theme=light] .vc{background:#f7f5ef;border-color:#e3ddcc}
+html[data-theme=light] .vc .m,html[data-theme=light] .pop .ft{color:#5b6383}
+html[data-theme=light] .vc .a button{border-color:#d3cab3;color:#0b1230}
+html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284c7);color:#fff}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -194,7 +234,7 @@ footer a{color:var(--mut)}
     <a href="#install"><span lang="en">Install</span><span lang="fa">نصب</span></a>
     <a class="h" href="#faq"><span lang="en">FAQ</span><span lang="fa">پرسش‌ها</span></a>
     <a class="gh" href="https://github.com/mrzroot/universal-video-downloader">GitHub</a>
-    <div class="lang" role="group" aria-label="Language"><button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="fa">فا</button></div>
+    <button type="button" class="mrz-tt" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></g></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button><div class="lang" role="group" aria-label="Language"><button type="button" data-set-lang="en">EN</button><button type="button" data-set-lang="fa">فا</button></div>
   </nav>
 </div></header>
 <div class="strip" aria-hidden="true"></div>
@@ -353,5 +393,16 @@ footer a{color:var(--mut)}
   io?io.observe($('#demo')):play();
 })();
 </script>
+<script>/*mrz-theme-toggle*/(function(){var d=document.documentElement,q=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+function fa(){return d.getAttribute('data-lang')==='fa'||d.lang==='fa'}
+function sync(){var t=d.getAttribute('data-theme')==='dark'?'dark':'light',f=fa();
+document.querySelectorAll('[data-theme-toggle]').forEach(function(x){var l=t==='dark'?(f?'\u062a\u063a\u06cc\u06cc\u0631 \u0628\u0647 \u062d\u0627\u0644\u062a \u0631\u0648\u0634\u0646':'Switch to light mode'):(f?'\u062a\u063a\u06cc\u06cc\u0631 \u0628\u0647 \u062d\u0627\u0644\u062a \u062a\u06cc\u0631\u0647':'Switch to dark mode');x.setAttribute('aria-label',l);x.title=l;x.setAttribute('aria-pressed',t==='dark'?'true':'false')});
+document.querySelectorAll('picture source[media*="prefers-color-scheme"]').forEach(function(s){if(!s.getAttribute('data-mq'))s.setAttribute('data-mq',s.media);var wd=/dark/.test(s.getAttribute('data-mq'));s.media=(wd===(t==='dark'))?'all':'not all'});
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#070b1a':'#f7f5ef')}
+function set(t,save){d.setAttribute('data-theme',t);d.style.colorScheme=t;if(save){try{localStorage.setItem('mrz-theme',t)}catch(e){}}try{document.dispatchEvent(new CustomEvent('mrz-theme',{detail:t}))}catch(e){}}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-theme-toggle]');if(!b)return;set(d.getAttribute('data-theme')==='dark'?'light':'dark',true)});
+if(q&&q.addEventListener)q.addEventListener('change',function(){var m;try{m=localStorage.getItem('mrz-theme')}catch(e){}if(m!=='light'&&m!=='dark')set(q.matches?'dark':'light',false)});
+window.addEventListener('storage',function(e){if(e.key==='mrz-theme'){var m=e.newValue;set(m==='light'||m==='dark'?m:(q&&q.matches?'dark':'light'),false)}});
+if(window.MutationObserver)new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['data-lang','lang','data-theme']});sync()})()</script>
 </body>
 </html>

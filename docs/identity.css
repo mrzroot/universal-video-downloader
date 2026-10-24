@@ -1,0 +1,35 @@
+/* UVD identity: "cinema". Blood-red on projector black (dark) / bone paper (light). Bebas Neue. Scrubbable film strip with sprocket holes, film grain, REC dot. */
+@font-face{font-family:'Bebas Neue';src:url(fonts/bebas-neue-400.woff2) format('woff2');font-weight:400;font-display:swap}
+html[data-theme=dark]:root{--bg:#0a0507;--bg2:#10080b;--panel:#160b0f;--panel2:#1e1015;--line:#33171f;--line2:#4a2430;--fg:#fbefe9;--mut:#bfa5a8;--dim:#88696f;--coral:#ff2d55;--peach:#ff7a59;--gold:#ffd27a;--strip:#050203;--strip-line:#33171f}
+html[data-theme=light]:root{--bg:#f1e9df;--bg2:#e8ddcf;--panel:#faf4ec;--panel2:#efe5d8;--line:#d9c9b4;--line2:#c4af92;--fg:#1b0c10;--mut:#5d4248;--dim:#7d6168;--coral:#c8102e;--peach:#a8431f;--strip:#d9c9b4;--strip-line:#c4af92}
+html[data-theme=dark] body{background:var(--bg)}
+html[data-theme] .top{background:color-mix(in srgb,var(--bg) 82%,transparent)}
+h1,h2,.brand{font-family:'Bebas Neue',Vazirmatn,Impact,sans-serif;font-weight:400!important;letter-spacing:.015em;text-transform:uppercase}
+h1{font-size:clamp(54px,7.4vw,112px)!important;line-height:.88!important}
+h2{font-size:clamp(40px,5vw,72px)!important;line-height:.95!important}
+html[data-lang=fa] h1,html[data-lang=fa] h2,html[lang=fa] h1,html[lang=fa] h2{font-family:Vazirmatn,sans-serif;font-weight:900!important;text-transform:none;line-height:1.35!important;letter-spacing:0}
+html[data-lang=fa] h1,html[lang=fa] h1{font-size:clamp(34px,4.6vw,64px)!important}
+html[data-lang=fa] h2,html[lang=fa] h2{font-size:clamp(26px,3.2vw,44px)!important}
+.brand{font-size:1.35em;letter-spacing:.08em}
+.hero{position:relative;overflow:clip;isolation:isolate;padding-bottom:clamp(150px,14vw,200px)!important}
+.hero::before,.hero::after{z-index:0}
+.hero .wrap{position:relative;z-index:2}
+.strip-fx{position:absolute;inset:auto 0 0 0;height:132px;width:100%;z-index:1;cursor:grab;touch-action:pan-y}
+.strip-fx:active{cursor:grabbing}
+.hero .grain{position:absolute;inset:-50%;z-index:3;pointer-events:none;opacity:.07;background-size:160px 160px;animation:grain .9s steps(6) infinite;mix-blend-mode:overlay}
+html[data-theme=light] .hero .grain{opacity:.16;mix-blend-mode:multiply}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-5%,3%)}40%{transform:translate(4%,-6%)}60%{transform:translate(-3%,5%)}80%{transform:translate(6%,2%)}100%{transform:translate(0,0)}}
+.hero::after{animation:flick 6s steps(1) infinite}
+@keyframes flick{0%,92%,96%,100%{opacity:1}93%{opacity:.6}95%{opacity:.85}}
+.slate{position:relative}
+.slate::before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--coral);margin-inline-end:8px;animation:rec 1.2s steps(1) infinite;vertical-align:middle}
+@keyframes rec{50%{opacity:.15}}
+.btn{border-radius:2px!important;font-family:'Bebas Neue',Vazirmatn,sans-serif;font-size:1.2em;letter-spacing:.1em;text-transform:uppercase}
+.br{box-shadow:0 0 0 1px var(--line2),0 40px 90px -30px color-mix(in srgb,var(--coral) 45%,transparent)!important}
+.fm{position:relative}
+.fm::before,.fm::after{content:'';position:absolute;inset-inline:0;height:10px;background:radial-gradient(circle at 7px 5px,var(--bg) 3px,transparent 3.5px) 0 0/18px 10px repeat-x;opacity:.9}
+.fm::before{top:0}.fm::after{bottom:0}
+@media(max-width:520px){.hero{padding-bottom:150px!important}.brand .fa-name{display:none}.strip-fx{height:104px}}
+@media(prefers-reduced-motion:reduce){.hero .grain,.hero::after,.slate::before{animation:none}}
+.brand{white-space:nowrap}
+@media(max-width:700px){.brand .long{display:none}}

@@ -224,7 +224,7 @@ html[data-theme=light] .vc .m,html[data-theme=light] .pop .ft{color:#5b6383}
 html[data-theme=light] .vc .a button{border-color:#d3cab3;color:#0b1230}
 html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284c7);color:#fff}
 </style>
-</head>
+<link rel="preload" href="fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"></head>
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#"><img src="favicon.svg" alt="">Super Video <span class="long">Downloader</span></a>
@@ -404,5 +404,5 @@ document.addEventListener('click',function(e){var b=e.target.closest&&e.target.c
 if(q&&q.addEventListener)q.addEventListener('change',function(){var m;try{m=localStorage.getItem('mrz-theme')}catch(e){}if(m!=='light'&&m!=='dark')set(q.matches?'dark':'light',false)});
 window.addEventListener('storage',function(e){if(e.key==='mrz-theme'){var m=e.newValue;set(m==='light'||m==='dark'?m:(q&&q.matches?'dark':'light'),false)}});
 if(window.MutationObserver)new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['data-lang','lang','data-theme']});sync()})()</script>
-</body>
+<script src="fx.js" defer></script></body>
 </html>

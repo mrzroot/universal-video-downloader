@@ -38,3 +38,6 @@ html[data-theme=light] .label,html[data-theme=light] .label span{color:#c10f2c}
 html[data-theme=light] .priv code,html[data-theme=light] .perm code,html[data-theme=light] div>code{color:#a4411e}
 html[data-theme=dark] .frame .n,html[data-theme=dark] footer .wrap>span,html[data-theme=dark] footer .wrap>span span{color:#94747a}
 a[href$="mrzroot.github.io/"]{text-decoration:underline;text-underline-offset:3px}
+
+/* QA: keep the "A" (automatic) badge anchored to the theme button */
+html .mrz-tt{position:relative}

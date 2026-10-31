@@ -63,6 +63,9 @@ h1 .g{background:linear-gradient(95deg,var(--coral),var(--peach) 50%,var(--gold)
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips span{font:600 12px var(--mono);border:1px solid var(--line2);border-radius:999px;padding:4px 11px;color:var(--mut)}
 /* mock browser */
+.simnote{grid-column:2;margin:-6px 0 0;font:500 13px/1.6 var(--mono,monospace);color:var(--mut);text-align:center}
+html[data-lang=fa] .simnote{font-family:inherit}
+@media (max-width:980px){.simnote{grid-column:auto}}
 .br{background:var(--panel);border:1px solid var(--line2);border-radius:14px;box-shadow:0 50px 100px -40px #000,0 0 0 1px rgba(255,255,255,.02) inset;position:relative;overflow:visible}
 .br .chrome{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--panel2);border-radius:14px 14px 0 0}
 .dots{display:flex;gap:6px}.dots i{width:10px;height:10px;border-radius:50%;background:#3a3249}
@@ -246,7 +249,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 <main>
 <section class="hero"><div class="wrap">
   <div>
-    <div class="slate"><span>MV3</span><span lang="en">Chrome · Edge · Brave</span><span lang="fa">کروم · اج · بریو</span></div>
+    <div class="slate"><span>v1.0.0</span><span>MV3</span><span lang="en">Chrome · Edge · Brave</span><span lang="fa">کروم · اج · بریو</span></div>
     <h1><span lang="en">Press play.<br><span class="g">Catch the real stream.</span></span><span lang="fa">پخش را بزنید.<br><span class="g">استریم واقعی را شکار کنید.</span></span></h1>
     <p class="lead"><span lang="en">Super Video Downloader watches the page's network traffic and video tags, spots <b>MP4, WebM, HLS (m3u8) and DASH</b> streams, and lists them in one popup so you can save the original file or copy its link. Everything happens inside your browser.</span><span lang="fa">Super Video Downloader ترافیک شبکه و تگ‌های ویدیوی صفحه را زیر نظر می‌گیرد، استریم‌های <b>MP4، WebM، HLS (m3u8) و DASH</b> را پیدا می‌کند و در یک پنجره فهرست می‌کند تا فایل اصلی را ذخیره یا لینکش را کپی کنید. همه‌چیز داخل مرورگر خودتان انجام می‌شود.</span></p>
     <div class="cta">
@@ -271,6 +274,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
     <div class="toast" id="toast"></div>
     <button class="replay" type="button" id="replay">↻ <span lang="en">Replay demo</span><span lang="fa">پخش دوباره</span></button>
   </div>
+  <p class="simnote"><span lang="en">Simulation: an animated mock-up of the popup on a made-up page. No real video or network requests here.</span><span lang="fa">شبیه‌سازی: نمایش متحرک پنجرهٔ افزونه روی یک صفحهٔ ساختگی. اینجا هیچ ویدیو یا درخواست شبکهٔ واقعی در کار نیست.</span></p>
 </div></section>
 <div class="strip" aria-hidden="true"></div>
 
@@ -322,7 +326,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 <section id="install"><div class="wrap">
   <div class="label"><span lang="en">Install</span><span lang="fa">نصب</span></div>
   <h2><span lang="en">Rolling in under a minute.</span><span lang="fa">در کمتر از یک دقیقه آماده.</span></h2>
-  <p class="sub"><span lang="en">It isn't in the Chrome Web Store, so you load it unpacked. Works in any Chromium browser with Manifest V3.</span><span lang="fa">در Chrome Web Store نیست، پس به‌صورت «بسته بازنشده» بارگذاری می‌شود. در هر مرورگر کرومیومی با Manifest V3 کار می‌کند.</span></p>
+  <p class="sub"><span lang="en">It isn't in the Chrome Web Store, so you load it unpacked. Works in any Chromium browser with Manifest V3. There is no packaged release yet: the <code>master</code> branch is version 1.0.0.</span><span lang="fa">در Chrome Web Store نیست، پس به‌صورت «بسته بازنشده» بارگذاری می‌شود. در هر مرورگر کرومیومی با Manifest V3 کار می‌کند. هنوز نسخهٔ بسته‌بندی‌شده (release) ندارد؛ شاخهٔ <code>master</code> همان نسخهٔ 1.0.0 است.</span></p>
   <div class="steps">
     <div class="st"><h3><span lang="en">Get the code</span><span lang="fa">دریافت کد</span></h3><p><span lang="en">Clone the repo, or download the ZIP and unzip it.</span><span lang="fa">مخزن را کلون کنید یا ZIP را دانلود و باز کنید.</span></p>
       <div class="cmd"><code id="c1">git clone https://github.com/mrzroot/universal-video-downloader.git</code><button class="copy" type="button" data-copy="c1">Copy</button></div></div>
@@ -352,8 +356,8 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 </main>
 <div class="strip" aria-hidden="true"></div>
 <footer><div class="wrap">
-  <span>Super Video Downloader · MIT · <span lang="en">by</span><span lang="fa">ساختهٔ</span> <a href="https://mrzroot.github.io/">M-R-Z (@mrzroot)</a></span>
-  <span><a href="https://mrzroot.github.io/projects/"><span lang="en">More projects</span><span lang="fa">پروژه‌های دیگر</span></a> · <a href="https://github.com/mrzroot/universal-video-downloader/issues"><span lang="en">Issues</span><span lang="fa">گزارش مشکل</span></a></span>
+  <span>Super Video Downloader v1.0.0 · MIT · <span lang="en">by</span><span lang="fa">ساختهٔ</span> <a href="https://mrzroot.github.io/">M-R-Z (@mrzroot)</a></span>
+  <span><a href="https://mrzroot.github.io/projects/"><span lang="en">More projects</span><span lang="fa">پروژه‌های دیگر</span></a> · <a href="https://github.com/mrzroot/universal-video-downloader/blob/master/CHANGELOG.md">Changelog</a> · <a href="https://github.com/mrzroot/universal-video-downloader/issues"><span lang="en">Issues</span><span lang="fa">گزارش مشکل</span></a></span>
 </div></footer>
 
 <script>

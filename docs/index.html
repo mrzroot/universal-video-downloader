@@ -70,8 +70,8 @@ h1 .g{background:linear-gradient(95deg,var(--coral),var(--peach) 50%,var(--gold)
 .ext{position:relative;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;cursor:pointer;border:0;background:none;padding:0}
 .ext img{width:20px;height:20px}
 .ext.on{background:rgba(56,189,248,.18)}
-.ext b{position:absolute;top:-4px;right:-6px;background:#0284c7;color:#fff;font:700 10px var(--sans);border-radius:6px;padding:1px 5px;min-width:16px;text-align:center;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
-.ext b.show{transform:scale(1)}
+.extw{position:relative;display:inline-grid}.extw>b{pointer-events:none;position:absolute;top:-4px;right:-6px;background:#0284c7;color:#fff;font:700 10px var(--sans);border-radius:6px;padding:1px 5px;min-width:16px;text-align:center;transform:scale(0);transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.extw>b.show{transform:scale(1)}
 .vp{direction:ltr;position:relative;aspect-ratio:16/8.2;margin:14px;border-radius:10px;overflow:hidden;background:#000}
 .scene{position:absolute;inset:0;background:linear-gradient(120deg,#2a1838,#5b1f3d 40%,#ff4f6d 75%,#ffb37a);background-size:300% 300%;animation:scene 10s ease-in-out infinite}
 .scene:before{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,#0008),repeating-linear-gradient(90deg,transparent 0 40px,#0002 40px 42px)}
@@ -216,7 +216,7 @@ html[data-theme=light] h1 .g{background:linear-gradient(95deg,#c0264a,#a8431f 50
 html[data-theme=light] .fnote{background:rgba(106,70,201,.06)}
 html[data-theme=light] .legal{border-color:rgba(192,38,74,.35);background:rgba(192,38,74,.05)}
 /* extension popup mock follows the theme too */
-html[data-theme] .ext b{background:#0369a1}
+html[data-theme] .extw>b{background:#0369a1}
 html[data-theme] .pop .ft{color:#8d9bb3}
 html[data-theme=light] .pop{background:#fffdf8;border-color:#d3cab3;color:#0b1230;box-shadow:0 30px 70px -20px rgba(11,18,48,.3),0 0 0 1px rgba(118,64,10,.18)}
 html[data-theme=light] .pop:before{background:#fffdf8;border-color:#d3cab3}
@@ -258,7 +258,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 
   <div class="br" id="demo">
     <div class="chrome"><span class="dots"><i></i><i></i><i></i></span><div class="url">https://video.example/watch/sunset-timelapse</div>
-      <button class="ext" type="button" id="ext" aria-label="Open extension popup"><img src="ext-icon.png" alt=""><b id="badge" aria-hidden="true">0</b></button></div>
+      <span class="extw"><button class="ext" type="button" id="ext" aria-label="Open extension popup"><img src="ext-icon.png" alt=""></button><b id="badge" aria-hidden="true">0</b></span></div>
     <div class="vp"><div class="scene"><div class="sun"></div><div class="hills"></div></div>
       <div class="ctrl"><i class="pl"></i><span class="tr"><i id="prog"></i></span><span id="tc">0:00</span></div></div>
     <div class="net"><div class="h"><span>request</span><span>type</span><span>size</span></div><div class="rows" id="net"></div></div>

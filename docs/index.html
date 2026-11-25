@@ -18,7 +18,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script>(function(){var d=document.documentElement,l='fa';try{l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('mrz-lang')||'fa'}catch(e){}if(l!=='en')l='fa';d.lang=l;d.dir=l==='fa'?'rtl':'ltr';d.setAttribute('data-lang',l)})()</script>
 <style>
-@font-face{font-family:Vazirmatn;src:url(fonts/vazirmatn-arabic.woff2) format('woff2');font-weight:400 800;font-display:swap;unicode-range:U+0600-06FF,U+0750-077F,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+
 :root{--bg:#09080d;--bg2:#100e16;--panel:#15121d;--panel2:#1c1826;--line:#2a2436;--line2:#3a3249;--fg:#fbf3ea;--mut:#a99fb6;--dim:#6f6680;
 --coral:#ff4f6d;--peach:#ff9e7a;--lilac:#b69cff;--gold:#ffd27a;--sky:#38bdf8;--ok:#5be3a0;
 --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,Vazirmatn,sans-serif;--fa:Vazirmatn,"Segoe UI",Tahoma,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
@@ -231,7 +231,9 @@ html[data-theme=light] .vc .m,html[data-theme=light] .pop .ft{color:#5b6383}
 html[data-theme=light] .vc .a button{border-color:#d3cab3;color:#0b1230}
 html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284c7);color:#fff}
 </style>
-<link rel="preload" href="fonts/bebas-neue-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"></head>
+<link rel="stylesheet" href="identity.css"><link rel="preload" href="fonts/Vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="redesign.css">
+</head>
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#"><img src="favicon.svg" alt="">Super Video <span class="long">Downloader</span></a>
@@ -249,6 +251,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 <main>
 <section class="hero"><div class="wrap">
   <div>
+    <div class="studio-index"><b>03</b><span lang="en">LOCAL MEDIA DESK</span><span lang="fa">میز رسانهٔ محلی</span></div>
     <div class="slate"><span>v1.0.0</span><span>MV3</span><span lang="en">Chrome · Edge · Brave</span><span lang="fa">کروم · اج · بریو</span></div>
     <h1><span lang="en">Press play.<br><span class="g">Catch the real stream.</span></span><span lang="fa">پخش را بزنید.<br><span class="g">استریم واقعی را شکار کنید.</span></span></h1>
     <p class="lead"><span lang="en">Super Video Downloader watches the page's network traffic and video tags, spots <b>MP4, WebM, HLS (m3u8) and DASH</b> streams, and lists them in one popup so you can save the original file or copy its link. Everything happens inside your browser.</span><span lang="fa">Super Video Downloader ترافیک شبکه و تگ‌های ویدیوی صفحه را زیر نظر می‌گیرد، استریم‌های <b>MP4، WebM، HLS (m3u8) و DASH</b> را پیدا می‌کند و در یک پنجره فهرست می‌کند تا فایل اصلی را ذخیره یا لینکش را کپی کنید. همه‌چیز داخل مرورگر خودتان انجام می‌شود.</span></p>
@@ -340,6 +343,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 <section id="faq" style="background:var(--bg2);border-top:1px solid var(--line)"><div class="wrap faq">
   <div class="label"><span lang="en">FAQ</span><span lang="fa">پرسش‌های رایج</span></div>
   <h2><span lang="en">Director's commentary.</span><span lang="fa">توضیحات کارگردان.</span></h2>
+  <details><summary><span lang="en">How do I test a known-good direct download?</span><span lang="fa">دانلود مستقیم را چطور آزمایش کنم؟</span></summary><p><span lang="en">Use a short MP4 you own on a local HTTP test page; play it first, then verify that the popup shows the MP4 and that the saved file plays. This does not test playlist assembly or access-controlled streams.</span><span lang="fa">یک MP4 متعلق به خودتان را از طریق صفحهٔ آزمایشی محلی پخش کنید. بررسی کنید که فایل در پنجرهٔ افزونه دیده شود و نسخهٔ ذخیره‌شده پخش شود. این کار آزمون مونتاژ پلی‌لیست یا پخش محدودشده نیست.</span></p></details>
   <details><summary><span lang="en">Why doesn't it find the video on some sites?</span><span lang="fa">چرا در بعضی سایت‌ها ویدیو پیدا نمی‌شود؟</span></summary><p><span lang="en">Start playback first, because many players only request the stream then. Sites that use DRM (Widevine/PlayReady), or feed the player through <code>blob:</code> URLs and MediaSource, don't expose a downloadable file. The extension skips them by design.</span><span lang="fa">اول ویدیو را پخش کنید؛ بسیاری از پلیرها فقط در آن لحظه استریم را درخواست می‌کنند. سایت‌هایی که DRM (مثل Widevine/PlayReady) دارند یا ویدیو را با آدرس‌های <code>blob:</code> و MediaSource پخش می‌کنند فایل قابل دانلودی ارائه نمی‌دهند و افزونه عمداً سراغشان نمی‌رود.</span></p></details>
   <details><summary><span lang="en">I downloaded an .m3u8 and it's tiny. Why?</span><span lang="fa">یک ‎.m3u8 دانلود کردم و خیلی کوچک است. چرا؟</span></summary><p><span lang="en">An m3u8 is a playlist that points to many small segments, not the video itself. Copy the link and merge it with ffmpeg or a similar tool.</span><span lang="fa">m3u8 یک پلی‌لیست است که به قطعه‌های کوچک زیادی اشاره می‌کند، نه خود ویدیو. لینک را کپی و با ffmpeg یا ابزار مشابه یکی کنید.</span></p></details>
   <details><summary><span lang="en">Does it work in Firefox or Safari?</span><span lang="fa">در فایرفاکس یا سافاری کار می‌کند؟</span></summary><p><span lang="en">It's built and tested for Chromium browsers (Chrome, Edge, Brave and others). Firefox and Safari aren't supported.</span><span lang="fa">برای مرورگرهای کرومیومی (کروم، اج، بریو و…) ساخته و آزموده شده است. فایرفاکس و سافاری پشتیبانی نمی‌شوند.</span></p></details>

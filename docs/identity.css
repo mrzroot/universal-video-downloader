@@ -1,5 +1,5 @@
 /* UVD identity: "cinema". Blood-red on projector black (dark) / bone paper (light). Bebas Neue. Scrubbable film strip with sprocket holes, film grain, REC dot. */
-@font-face{font-family:'Bebas Neue';src:url(fonts/bebas-neue-400.woff2) format('woff2');font-weight:400;font-display:swap}
+
 html[data-theme=dark]:root{--bg:#0a0507;--bg2:#10080b;--panel:#160b0f;--panel2:#1e1015;--line:#33171f;--line2:#4a2430;--fg:#fbefe9;--mut:#bfa5a8;--dim:#88696f;--coral:#ff2d55;--peach:#ff7a59;--gold:#ffd27a;--strip:#050203;--strip-line:#33171f}
 html[data-theme=light]:root{--bg:#f1e9df;--bg2:#e8ddcf;--panel:#faf4ec;--panel2:#efe5d8;--line:#d9c9b4;--line2:#c4af92;--fg:#1b0c10;--mut:#5d4248;--dim:#7d6168;--coral:#c8102e;--peach:#a8431f;--strip:#d9c9b4;--strip-line:#c4af92}
 html[data-theme=dark] body{background:var(--bg)}

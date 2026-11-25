@@ -22,6 +22,14 @@ tracking. Use it only for videos you are allowed to download.
 3. Turn on **Developer mode** and click **Load unpacked**, then pick the folder that contains `manifest.json`.
 4. Pin the extension, play a video on any page, and click the icon to see what it found.
 
+## Try it on a file you own
+
+1. Place an MP4 you own beside an `index.html` with `<video controls src="sample.mp4"></video>` and save the video as `sample.mp4`.
+2. From that folder run `python -m http.server --bind 127.0.0.1 8000`, then open `http://127.0.0.1:8000/` in the browser where the extension is loaded.
+3. Start playback, open the extension, and check that `sample.mp4` appears. Copy or save it, then compare the saved file with your original.
+
+See `manifest.json` before installing: the current build requests all-site host access to detect media requests. Use a dedicated browser profile if you prefer to keep it separate from everyday browsing. Do not share copied URLs that contain access tokens or other private parameters.
+
 ## Features
 
 - **Spots video requests** as the page loads them: `.mp4`, `.webm`, `.mkv`, `.mov`, `.m4v`, `.flv`, `.avi`, `.ts`, `.m3u8` (HLS) and `.mpd` (DASH).

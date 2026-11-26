@@ -233,7 +233,7 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
 </style>
 <link rel="stylesheet" href="identity.css"><link rel="preload" href="fonts/Vazirmatn.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="redesign.css">
-<link rel="stylesheet" href="/assets/studio-mark.css"></head>
+<link rel="stylesheet" href="/assets/studio-mark.css"><link rel="stylesheet" href="/assets/portfolio/embed.css"><script defer src="/assets/portfolio/exhibit.js"></script></head>
 <body>
 <header class="top"><div class="wrap">
   <a class="brand" href="#"><img src="favicon.svg" alt="">Super Video <span class="long">Downloader</span></a>
@@ -279,11 +279,32 @@ html[data-theme] .vc .a button.d{background:linear-gradient(135deg,#0369a1,#0284
   </div>
   <p class="simnote"><span lang="en">Simulation: an animated mock-up of the popup on a made-up page. No real video or network requests here.</span><span lang="fa">شبیه‌سازی: نمایش متحرک پنجرهٔ افزونه روی یک صفحهٔ ساختگی. اینجا هیچ ویدیو یا درخواست شبکهٔ واقعی در کار نیست.</span></p>
 </div></section>
-<aside class="studio-project-entry" style="--entry-color:#c8baff">
-  <img src="/assets/thumbs/universal-video-downloader.webp" alt="" width="160" height="100" loading="lazy" decoding="async">
-  <div><strong>مانیفست رسانهٔ نمونه را بخوان</strong><small>نسخهٔ ۷۲۰ را بررسی کن</small></div>
-  <a href="/playground/?project=universal-video-downloader&amp;lang=fa">سناریو را امتحان کن ↗</a>
-</aside>
+<div class="atlas-embedded" data-motif="film" style="--exhibit-hue:254"><section class="exhibit-studio" id="portfolio-example" data-project="universal-video-downloader" data-motif="film" data-state="0" aria-labelledby="portfolio-example-title">
+    <div class="exhibit-studio-head"><div><p class="exhibit-kicker"><span class="pf-en" lang="en">Illustrative sample</span><span class="pf-fa" lang="fa">دادهٔ نمونه</span></p><h2 id="portfolio-example-title"><span class="pf-en" lang="en">Scrub the sequence</span><span class="pf-fa" lang="fa">توالی را جلو و عقب ببر</span></h2></div>
+       <a href="/projects/guide/universal-video-downloader/"><span class="pf-en" lang="en">Interactive introduction</span><span class="pf-fa" lang="fa">معرفی تعاملی</span> <i class="exhibit-arrow" aria-hidden="true"></i></a></div>
+    <div class="exhibit-lab">
+      <div class="stage-picture" aria-hidden="true">
+        <div class="stage-sign"><i></i><i></i><i></i><strong dir="ltr">Universal Video Downloader</strong></div>
+
+        <div class="stage-track" dir="ltr"></div>
+        <div class="stage-evidence" dir="ltr"><span dir="auto">manifest</span><span dir="auto">720p · 2 Mb/s</span><span dir="auto">1080p · 5 Mb/s</span></div>
+      </div>
+      <div class="stage-work">
+        <p><span class="pf-en" lang="en">A public-domain training clip offers 720p and 1080p variants with different bitrates. Which fits a small preview?</span><span class="pf-fa" lang="fa">ویدیوی آموزشیِ آزاد دو نسخهٔ ۷۲۰ و ۱۰۸۰ با نرخ بیت متفاوت دارد. برای پیش‌نمایش سبک کدام مناسب است؟</span></p>
+        <div class="stage-actions" role="group" aria-label="Example controls / کنترل‌های نمونه">
+          <button type="button" data-stage="1" aria-pressed="false"><span class="pf-en" lang="en">Inspect the 720p variant</span><span class="pf-fa" lang="fa">نسخهٔ ۷۲۰ را بررسی کن</span><i class="exhibit-arrow" aria-hidden="true"></i></button><button type="button" data-stage="2" aria-pressed="false"><span class="pf-en" lang="en">Choose the largest stream</span><span class="pf-fa" lang="fa">بزرگ‌ترین جریان را انتخاب کن</span><i class="exhibit-arrow" aria-hidden="true"></i></button>
+        </div>
+        <output class="stage-result" aria-live="polite"><span class="pf-en" lang="en">Try a response to see its effect.</span><span class="pf-fa" lang="fa">یک کار را انتخاب کن و اثرش را ببین.</span></output>
+        <div class="stage-foot">
+          <button type="button" data-stage="0" aria-pressed="true"><span class="pf-en" lang="en">Reset example</span><span class="pf-fa" lang="fa">بازنشانی نمونه</span></button>
+          <input type="range" min="0" max="2" value="0" step="1" aria-label="Example position / مرحلهٔ نمونه">
+        </div>
+      </div>
+    </div>
+   </section>
+    <p class="exhibit-takeaway"><span class="pf-en" lang="en">Use a public-domain media fixture and compare bitrate and resolution before picking a preview variant.</span><span class="pf-fa" lang="fa">با یک نمونهٔ رسانهٔ آزاد، نرخ بیت و وضوح گزینه‌ها را پیش از انتخاب نسخهٔ پیش‌نمایش مقایسه کن.</span></p>
+    <script type="application/json" data-embed-project>{"entries":[{"id":"universal-video-downloader","group":"showcase","motif":"film","color":"#c8baff","title":["Read a sample media manifest","مانیفست رسانهٔ نمونه را بخوان"],"brief":["A public-domain training clip offers 720p and 1080p variants with different bitrates. Which fits a small preview?","ویدیوی آموزشیِ آزاد دو نسخهٔ ۷۲۰ و ۱۰۸۰ با نرخ بیت متفاوت دارد. برای پیش‌نمایش سبک کدام مناسب است؟"],"actions":[["Inspect the 720p variant","نسخهٔ ۷۲۰ را بررسی کن"],["Choose the largest stream","بزرگ‌ترین جریان را انتخاب کن"]],"outcomes":[["The lower-bitrate variant reduces transfer size for the preview.","نسخهٔ با نرخ بیت کمتر، اندازهٔ انتقال پیش‌نمایش را کم می‌کند."],["The high-resolution variant uses more bandwidth than the small preview needs.","نسخهٔ پُروضوح بیشتر از نیاز پیش‌نمایش کوچک پهنای باند مصرف می‌کند."]],"evidence":[["manifest","720p · 2 Mb/s","1080p · 5 Mb/s"],["preview · 720p","2 Mb/s"],["preview · 1080p","5 Mb/s"]],"name":"Universal Video Downloader","kicker":["Browser extension","افزونهٔ مرورگر"],"intro":["A Chromium extension for reviewing supported media loaded by the page. Direct files and streaming playlists are handled differently.","افزونهٔ Chromium برای دیدن رسانهٔ پشتیبانی‌شده‌ای که صفحه بارگیری کرده؛ فایل مستقیم با فهرست پخش استریم فرق دارد."],"hint":["Try your own short test video to see the difference between a direct file and a streaming playlist.","با یک ویدئوی کوتاه متعلق به خودتان، تفاوت فایل مستقیم و فهرست پخش استریم را ببینید."],"site":"/universal-video-downloader/","source":"https://github.com/mrzroot/universal-video-downloader","layout":"contact","hue":254,"image":"/assets/thumbs/universal-video-downloader.webp"}],"labels":{"map":["Project Atlas","اطلس پروژه‌ها"],"mapIntro":["Four ways to explore the projects. Choose a project to see what it does and open its interactive introduction.","چهار مسیر برای گشتن میان پروژه‌ها. یکی را انتخاب کن تا ببینی چه کار می‌کند و معرفی تعاملی‌اش را باز کنی."],"agents":["AI tooling","ابزارهای هوش مصنوعی"],"language":["Language and data","زبان و داده"],"systems":["Systems","سامانه‌ها"],"showcase":["Design and demos","طراحی و دمو"],"projects":["All projects","همهٔ پروژه‌ها"],"open":["Interactive introduction","معرفی تعاملی"],"test":["Try the example","نمونه را امتحان کن"],"story":["The situation","مسئله"],"reference":["Inspect the project","بررسی پروژه"],"source":["View source on GitHub","کد منبع در گیت‌هاب"],"demo":["Open project website","باز کردن سایت پروژه"],"guide":["Suggested first step","قدم اول پیشنهادی"],"sample":["Illustrative sample","دادهٔ نمونه"],"result":["What happens","نتیجه"],"choose":["Try a response to see its effect.","یک کار را انتخاب کن و اثرش را ببین."],"still":["Initial state","حالت اولیه"],"reset":["Reset example","بازنشانی نمونه"],"more":["Explore another project","یک پروژهٔ دیگر ببین"]}}</script>
+  </div>
 <div class="strip" aria-hidden="true"></div>
 
 <section id="how"><div class="wrap">
